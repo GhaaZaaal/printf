@@ -13,10 +13,21 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	while (*format)
 	{
-		if (*format == '%' && *(format + 1) != '\0')
+		if (*format == '%')
 		{
 			format++, int_funs = specifiers_int(*format);
-			while (int_funs != NULL)
+			if (int_funs == NULL)
+			{
+				s_f = specifiers_str(*format);
+				if (s_f != NULL)
+				{
+					arg_s = va_arg(args, char *), tobf = s_f(arg_s);
+					for (i = 0; tobf[i]; i++, count++)
+						bf_out[buf_i++] = tobf[i];
+					free(tobf);
+				}
+			}
+			else
 			{
 				arg_int = (*format != '%') ? va_arg(args, int) : '%';
 				tobf = (*format != '%') ? int_funs(arg_int) : for_module('%');
@@ -24,27 +35,16 @@ int _printf(const char *format, ...)
 					bf_out[buf_i++] = tobf[i];
 				free(tobf), buffer_out(bf_out, buf_i), buf_i = 0;
 			}
-			s_f = specifiers_str(*format);
-			while (s_f != NULL)
-			{
-				arg_s = va_arg(args, char *), tobf = s_f(arg_s);
-				for (i = 0; tobf[i]; i++, count++)
-					bf_out[buf_i++] = tobf[i];
-				free(tobf);
-			}
-			if (int_funs == NULL && s_f == NULL)
-				bf_out[buf_i++] = '%', bf_out[buf_i++] = *format, count += 2;
 		}
-		else if (*format != '%')
+		else
 		{
 			bf_out[buf_i++] = *format;
 			count++;
 		}
-		else
-			return (-1);
 		format++;
 	}
-	buffer_out(bf_out, buf_i), va_end(args);
+	buffer_out(bf_out, buf_i);
+	va_end(args);
 	return (count);
 }
 
