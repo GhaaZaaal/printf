@@ -50,7 +50,7 @@ char *for_rot13(const char *string);
 char *for_string(const char *string);
 char *for_reverse(const char *string);
 int num_digits(int num);
-void buffer_out(char *buffer, int index);
+void buffer_out(char *buffer, unsigned int index);
 
 char *(*specifiers_int(char is_it_specifier))(int);
 char *for_module(int a);
@@ -60,4 +60,3 @@ int buffering(char *buffer);
 
 
 #endif /* MAIN_H */
-
