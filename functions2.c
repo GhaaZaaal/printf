@@ -90,3 +90,20 @@ char *for_unsigned(int number)
 	}
 	return (buffer);
 }
+/**
+ * buffering - output buffer
+ *@tbf: the string coming from the function calls
+ *@bf_ot: the string coming from non args in the _printf function
+ *@bf_i: the index of the buffer of the non args
+ *@count: the count of chars that will be counted by the _printf func
+ */
+void buffering(char *tbf, char *bf_ot, unsigned int *bf_i, unsigned int *count)
+{
+	int i;
+
+	for (i = 0; tbf[i]; i++, (*count)++)
+		bf_ot[(*bf_i)++] = tbf[i];
+	free(tbf);
+	buffer_out(bf_ot, *bf_i);
+	*bf_i = 0;
+}

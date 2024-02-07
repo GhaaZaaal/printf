@@ -50,7 +50,7 @@ char *for_string(const char *string);
 char *for_reverse(const char *string);
 int num_digits(int num);
 void buffer_out(char *buffer, unsigned int index);
-
+void buffering(char *tbf, char *bf_ot, unsigned int *bf_i, unsigned int *count);
 char *(*specifiers_int(char is_it_specifier))(int);
 char *for_module(int a);
 char *(*specifiers_str(char is_it_specifier))(const char *);
