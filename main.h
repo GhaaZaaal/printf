@@ -53,6 +53,6 @@ void buffer_out(char *buffer, unsigned int index);
 char *(*specifiers_int(char is_it_specifier))(int);
 char *for_module(int a);
 char *(*specifiers_str(char is_it_specifier))(const char *);
-void buffering(char *tbf, char *bf_ot, unsigned int *bf_i, unsigned int *count);
+void buffering(char *tbf, char *bf_o, unsigned int *bf_i, unsigned int *count);
 
 #endif /* MAIN_H */

@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
 				}
 				else if (s_f == NULL)
 				{
-					bf_ot[bf_i++] = *format, count++;
+					bf_ot[bf_i++] = '%', bf_ot[bf_i++] = *format, count += 2;
 				}
 			}
 		}
