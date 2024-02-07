@@ -37,7 +37,6 @@ typedef struct specifier_function_str
 	char *(*function_for_type)(const char *);
 } specifier_str;
 
-
 int _printf(const char *format, ...);
 char *for_binary(int number);
 char *for_int(int);
@@ -55,8 +54,5 @@ void buffer_out(char *buffer, unsigned int index);
 char *(*specifiers_int(char is_it_specifier))(int);
 char *for_module(int a);
 char *(*specifiers_str(char is_it_specifier))(const char *);
-int buffering(char *buffer);
-
-
 
 #endif /* MAIN_H */

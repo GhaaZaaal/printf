@@ -14,7 +14,8 @@ char *for_binary(int number)
 	buffer = (char *)malloc(1 * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
-	do {
+	do
+	{
 		buffer[counter++] = '0' + (number % 2);
 		number /= 2;
 		tmp = (char *)realloc(buffer, (counter) * sizeof(char));
@@ -85,7 +86,8 @@ char *for_octal(int numberr)
 	buffer = (char *)malloc(1 * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
-	do {
+	do
+	{
 		buffer[counter++] = '0' + (number % 8);
 		number /= 8;
 		tmp = (char *)realloc(buffer, (counter) * sizeof(char));
@@ -123,7 +125,8 @@ char *for_hex(int numberr)
 	if (buffer == NULL)
 		return (NULL);
 
-	do {
+	do
+	{
 		if (number % 16 > 9)
 		{
 			buffer[counter++] = 'a' + (number % 16) - 10;
@@ -168,7 +171,8 @@ char *for_HEX(int numberr)
 	if (buffer == NULL)
 		return (NULL);
 
-	do {
+	do
+	{
 		if (number % 16 > 9)
 		{
 			buffer[counter++] = 'a' + (number % 16) - 10;

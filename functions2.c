@@ -3,7 +3,7 @@
  * for_string - prints a string from va_list
  * @string: passed string from func
  * Return: buffer string
-*/
+ */
 char *for_string(const char *string)
 {
 	char *buffer_store;
@@ -27,7 +27,7 @@ char *for_string(const char *string)
  * for_reverse - prints a string from va_list
  * @string: passed string from func
  * Return: buffer string
-*/
+ */
 char *for_reverse(const char *string)
 {
 	char *buffer_store;
@@ -67,7 +67,8 @@ char *for_unsigned(int number)
 	{
 		number *= -1;
 	}
-	do {
+	do
+	{
 		buffer[counter++] = '0' + (number % 10);
 		number /= 10;
 		tmp = (char *)realloc(buffer, (counter) * sizeof(char));
