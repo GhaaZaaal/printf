@@ -53,17 +53,16 @@ char *for_char(int character)
 char *for_int(int number)
 {
 	char *buffer, *tmp;
-	int counter = 0;
-	int start = 0;
-	int end, sign = 0;
+	int counter = 0, start = 0, end, sign = 0;
 
 	buffer = (char *)malloc(2 * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
 	if (number < 0)
 		number *= -1, sign = 1;
-	do {
-		buffer[counter++] = '0' + (number % 10);
+	do
+	{
+		buffer[counter++] = ('0' + (number % 10));
 		number /= 10;
 		tmp = (char *)realloc(buffer, (counter) * sizeof(char));
 
@@ -76,8 +75,8 @@ char *for_int(int number)
 	} while (number != 0);
 	if (sign == 1)
 	{
-		tmp = (char *)realloc(buffer, (counter) * sizeof(char));
 		buffer[counter] = '-', counter++;
+		tmp = (char *)realloc(buffer, (counter) * sizeof(char));
 	}
 	buffer[counter] = '\0', end = counter - 1;
 	while (start < end)
@@ -93,7 +92,7 @@ char *for_int(int number)
  * for_module - prints module
  * @a: the '%' char
  * Return: made string
-*/
+ */
 char *for_module(int a)
 {
 	char *buffer_store = (char *)malloc(2 * sizeof(char));
@@ -106,7 +105,7 @@ char *for_module(int a)
  * specifiers_str - checks for string specifires
  * @is_it_specifier: passed char to check here
  * Return: made string
-*/
+ */
 char *(*specifiers_str(char is_it_specifier))(const char *)
 {
 	specifier_str array[] = {
