@@ -6,9 +6,9 @@
  */
 int _printf(const char *format, ...)
 {
-	char bf_out[1024], *tobf, *arg_s, *(*int_f)(int), *(*s_f)(const char *);
+	char bf_ot[1024], *tobf, *arg_s, *(*int_f)(int), *(*s_f)(const char *);
 	const char *p = format;
-	unsigned int buf_i = 0, count = 0, ar_int;
+	unsigned int bf_i = 0, count = 0, ar_int;
 	va_list args;
 
 	va_start(args, format);
@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 			if (int_f != NULL)
 			{
 				ar_int = (*format == '%') ? '%' : va_arg(args, int), tobf = int_f(ar_int);
-				tobf != NULL ? buffering(tobf, bf_out, &buf_i, &count) : (void)0;
+				tobf != NULL ? buffering(tobf, bf_ot, &bf_i, &count) : (void)0;
 			}
 			else if (int_f == NULL)
 			{
@@ -30,21 +30,21 @@ int _printf(const char *format, ...)
 				if (s_f != NULL)
 				{
 					arg_s = va_arg(args, char *), tobf = s_f(arg_s);
-					tobf != NULL ? buffering(tobf, bf_out, &buf_i, &count) : (void)0;
+					tobf != NULL ? buffering(tobf, bf_ot, &bf_i, &count) : (void)0;
 				}
 				else if (s_f == NULL)
 				{
-					bf_out[buf_i++] = *format, count++;
+					bf_ot[bf_i++] = *format, count++;
 				}
 			}
 		}
 		else if (*format != '%')
 		{
-			bf_out[buf_i++] = *format, count++;
+			bf_ot[bf_i++] = *format, count++;
 		}
 		format++;
 	}
-	buffer_out(bf_out, buf_i), va_end(args);
+	buffer_out(bf_ot, bf_i), va_end(args);
 	return (count);
 }
 

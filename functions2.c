@@ -102,7 +102,9 @@ void buffering(char *tbf, char *bf_ot, unsigned int *bf_i, unsigned int *count)
 	int i;
 
 	for (i = 0; tbf[i]; i++, (*count)++)
+	{
 		bf_ot[(*bf_i)++] = tbf[i];
+	}
 	free(tbf);
 	buffer_out(bf_ot, *bf_i);
 	*bf_i = 0;
