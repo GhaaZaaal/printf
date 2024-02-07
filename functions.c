@@ -171,7 +171,7 @@ char *for_HEX(int numberr)
 	do {
 		if (number % 16 > 9)
 		{
-			buffer[counter++] = 'a' + (number % 16) - 10;
+			buffer[counter++] = 'A' + (number % 16) - 10;
 		}
 		else
 		{
