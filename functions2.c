@@ -67,8 +67,7 @@ char *for_unsigned(int number)
 	{
 		number *= -1;
 	}
-	do
-	{
+	do {
 		buffer[counter++] = '0' + (number % 10);
 		number /= 10;
 		tmp = (char *)realloc(buffer, (counter) * sizeof(char));
