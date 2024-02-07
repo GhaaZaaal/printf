@@ -44,7 +44,7 @@ char *for_binary(int number)
  */
 char *for_rot13(const char *string)
 {
-	int i, indexer = 0;
+	int i;
 	size_t j, len = strlen(string);
 	char rot13[] = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char ROT13[] = "nopqrstuvwxyzabcdefghijklm NOPQRSTUVWXYZABCDEFGHIJKLM";
