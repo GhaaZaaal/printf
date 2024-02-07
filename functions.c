@@ -45,24 +45,28 @@ char *for_binary(int number)
 char *for_rot13(const char *string)
 {
 	int i, indexer = 0;
+	size_t j, len = strlen(string);
 	char rot13[] = "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char ROT13[] = "nopqrstuvwxyzabcdefghijklm NOPQRSTUVWXYZABCDEFGHIJKLM";
-	char *pointer_string = (char *)malloc(sizeof(string) * sizeof(char));
+	char *pointer_string = (char *)malloc((len + 1) * sizeof(char));
 
-	while (*string)
+	if (pointer_string == NULL)
 	{
-		pointer_string[indexer] = *string;
-		indexer++;
-		string++;
+		return (NULL);
 	}
-	while (indexer >= 0)
+	for (j = 0; j < len; j++)
 	{
-		for (i = 0; i <= 53; i++)
+		pointer_string[j] = string[j];
+	}
+	pointer_string[len] = '\0';
+
+	for (j = 0; j < len; j++)
+	{
+		for (i = 0; i < 53; i++)
 		{
-			if (pointer_string[indexer] == rot13[i])
+			if (pointer_string[j] == rot13[i])
 			{
-				pointer_string[indexer] = ROT13[i];
-				indexer--;
+				pointer_string[j] = ROT13[i];
 				break;
 			}
 		}
